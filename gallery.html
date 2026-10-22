@@ -19,6 +19,12 @@
             <span class="section-label" style="justify-content:center;">Our Portfolio</span>
             <h1>Project Gallery</h1>
             <p>Explore our completed fireplace installations — from cozy indoor hearths to stunning outdoor living spaces. Every project is a testament to our craftsmanship.</p>
+        </div>
+    </section>
+
+    <!-- ═══ Gallery Grid ═══ -->
+    <section class="gallery-section">
+        <div class="container">
             <div class="gallery-tabs">
                 <button class="gallery-tab active" data-filter="all">All Projects</button>
                 <button class="gallery-tab" data-filter="indoor">Indoor</button>
@@ -26,12 +32,6 @@
                 <button class="gallery-tab" data-filter="modern">Modern</button>
                 <button class="gallery-tab" data-filter="traditional">Traditional</button>
             </div>
-        </div>
-    </section>
-
-    <!-- ═══ Gallery Grid ═══ -->
-    <section class="gallery-section">
-        <div class="container">
             <div class="gallery-grid">
                 <div class="gallery-item scroll-reveal" data-category="indoor" onclick="openLightbox('assets/images/hero-fireplace.jpg','Luxury stone fireplace living room')">
                     <img src="assets/images/hero-fireplace.jpg" alt="Luxury stone fireplace living room">
@@ -85,14 +85,35 @@
         </div>
     </section>
 
-    <!-- ═══ CTA ═══ -->
-    <section class="cta-banner">
+    <!-- ═══ CTA Banner (Visual Design Studio 3D Room Mockup) ═══ -->
+    <section class="cta-banner-wrapper">
         <div class="container scroll-reveal">
-            <h2>Love What You See?</h2>
-            <p>Let us create the fireplace of your dreams. Schedule a free consultation and start your project today.</p>
-            <div class="hero-btns" style="justify-content:center;">
-                <a href="contact.html" class="btn btn-primary btn-lg">Start Your Project</a>
-                <a href="products.html" class="btn btn-secondary btn-lg">Browse Products</a>
+            <div class="cta-banner cta-gallery-mockup">
+                <div class="cta-mockup-wrap">
+                    <span class="cta-mockup-badge">Visual Design Studio</span>
+                    <h2>Envision These Fireplaces in Your Own Home</h2>
+                    <p>Inspired by an installation in our gallery? Send us a photo of your living room, master bedroom, or outdoor patio. Our design studio will build a complimentary 3D photorealistic rendering of your chosen fireplace placed directly into your room.</p>
+                    <div class="cta-mockup-steps">
+                        <div class="cta-step-item">
+                            <span class="cta-step-num">1</span>
+                            <span class="cta-step-text">Snap Room Photo</span>
+                        </div>
+                        <div class="cta-step-divider"></div>
+                        <div class="cta-step-item">
+                            <span class="cta-step-num">2</span>
+                            <span class="cta-step-text">Select Preferred Style</span>
+                        </div>
+                        <div class="cta-step-divider"></div>
+                        <div class="cta-step-item">
+                            <span class="cta-step-num">3</span>
+                            <span class="cta-step-text">Receive Custom 3D Render</span>
+                        </div>
+                    </div>
+                    <div class="hero-btns" style="justify-content:center;margin-top:2.25rem;">
+                        <a href="contact.html" class="btn btn-primary btn-lg">Request Free 3D Mockup</a>
+                        <a href="products.html" class="btn btn-secondary btn-lg">Browse Fireplace Models</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
