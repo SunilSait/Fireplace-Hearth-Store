@@ -79,6 +79,21 @@ function toggleDir(e) {
     });
 }
 
+/* ─── AUTH PAGE HELPERS ─────────────────────────────────── */
+function initAuthPage() {
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('hearth_theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) html.classList.add('dark');
+    if (localStorage.getItem('hearth_dir') === 'rtl') html.setAttribute('dir', 'rtl');
+
+    // Update icons and labels
+    document.querySelectorAll('.theme-icon-wrap').forEach(updateThemeIcon);
+    document.querySelectorAll('.dir-label').forEach(el => {
+        el.textContent = html.getAttribute('dir') === 'rtl' ? 'RTL' : 'LTR';
+    });
+}
+
 /* ─── PASSWORD TOGGLE ────────────────────────────────── */
 function togglePasswordVisibility(inputId, btn) {
     const input = document.getElementById(inputId);
@@ -124,6 +139,7 @@ function injectNav() {
     el.innerHTML = `
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
+            <!-- Logo -->
             <a href="index.html" class="nav-logo" aria-label="Fireplace & Hearth Home">
                 <div class="nav-logo-icon">${LOGO_SVG}</div>
                 <div class="nav-logo-text">
@@ -132,27 +148,35 @@ function injectNav() {
                 </div>
             </a>
 
+            <!-- Desktop Nav Links -->
             <div class="nav-links">
                 ${navLinksHTML}
             </div>
 
+            <!-- Right Actions -->
             <div class="nav-actions">
-                <button onclick="toggleDir(event)" class="nav-icon-btn" title="Toggle Text Direction" aria-label="Toggle text direction">
-                    <span class="dir-label" style="font-size:0.65rem;font-weight:700;">${isRTL ? 'RTL' : 'LTR'}</span>
+                <!-- RTL Toggle -->
+                <button onclick="toggleDir(event)" class="nav-icon-btn" title="Toggle Direction">
+                    <span class="dir-label" style="font-size:0.625rem;">${isRTL ? 'RTL' : 'LTR'}</span>
                 </button>
+                <!-- Theme Toggle -->
                 <button onclick="toggleTheme(event)" class="nav-icon-btn" title="Toggle Theme" aria-label="Toggle dark mode">
                     <span class="theme-icon-wrap">${isDark ? ICONS.sun : ICONS.moon}</span>
                 </button>
+                <!-- CTAs -->
                 <a href="contact.html" class="btn btn-secondary btn-sm">Get a Quote</a>
                 <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <!-- Mobile Hamburger -->
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu(event)" aria-label="Open menu">
                     <span class="mobile-menu-icon">${ICONS.menu}</span>
                 </button>
             </div>
         </div>
 
+        <!-- Mobile Backdrop -->
         <div class="mobile-backdrop" id="mobile-backdrop" onclick="toggleMobileMenu(event)"></div>
 
+        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
             ${mobileLinksHTML}
             <div class="mob-actions">
@@ -161,7 +185,7 @@ function injectNav() {
             </div>
             <div class="mob-toggles">
                 <button onclick="toggleDir(event)" class="nav-icon-btn" title="Toggle Direction">
-                    <span class="dir-label" style="font-size:0.65rem;font-weight:700;">${isRTL ? 'RTL' : 'LTR'}</span>
+                    <span class="dir-label" style="font-size:0.625rem;">${isRTL ? 'RTL' : 'LTR'}</span>
                 </button>
                 <button onclick="toggleTheme(event)" class="nav-icon-btn" title="Toggle Theme">
                     <span class="theme-icon-wrap">${isDark ? ICONS.sun : ICONS.moon}</span>
@@ -172,13 +196,21 @@ function injectNav() {
     <div class="navbar-spacer"></div>`;
 
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 }
 
 function toggleMobileMenu(e) {
-    if (e && e.stopPropagation) e.stopPropagation();
+    if (e && e.stopPropagation) {
+        e.stopPropagation();
+    }
     const menu = document.getElementById('mobile-menu');
     const backdrop = document.getElementById('mobile-backdrop');
     const iconEl = document.querySelector('.mobile-menu-icon');
@@ -196,14 +228,16 @@ function toggleMobileMenu(e) {
     }
 }
 
+// Close mobile menu on outside click
 document.addEventListener('click', function(e) {
     const menu = document.getElementById('mobile-menu');
     const backdrop = document.getElementById('mobile-backdrop');
     const btn = document.querySelector('.mobile-menu-btn');
     if (!menu || !menu.classList.contains('open')) return;
+
     if (btn && (btn === e.target || btn.contains(e.target))) return;
-    if (e.composedPath && e.composedPath().includes(menu)) return;
     if (menu.contains(e.target)) return;
+
     menu.classList.remove('open');
     if (backdrop) backdrop.classList.remove('open');
     const iconEl = document.querySelector('.mobile-menu-icon');
@@ -219,16 +253,17 @@ function injectFooter() {
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- Column 1: Brand & Socials -->
                 <div class="footer-brand">
-                    <a href="index.html" class="nav-logo footer-logo" aria-label="Fireplace & Hearth Home" style="margin-bottom:1rem;">
+                    <a href="index.html" class="nav-logo footer-logo" aria-label="Fireplace & Hearth Home">
                         <div class="nav-logo-icon">${LOGO_SVG}</div>
                         <div class="nav-logo-text">
-                            <span class="brand-top" style="color:var(--clr-light);">FIREPLACE</span>
+                            <span class="brand-top" style="color:#fff;">FIREPLACE</span>
                             <span class="brand-bottom">& Hearth</span>
                         </div>
                     </a>
                     <p class="footer-brand-text">Premium fireplace installations, exquisite mantels, and expert hearth services. Bringing warmth and elegance to homes since 2005.</p>
-                    <div class="footer-social">
+                    <div class="footer-socials">
                         <a href="#" class="footer-social-link" aria-label="Facebook">${ICONS.facebook}</a>
                         <a href="#" class="footer-social-link" aria-label="Instagram">${ICONS.instagram}</a>
                         <a href="#" class="footer-social-link" aria-label="YouTube">${ICONS.youtube}</a>
@@ -236,31 +271,34 @@ function injectFooter() {
                     </div>
                 </div>
 
+                <!-- Column 2: Quick Links -->
                 <div class="footer-col">
                     <h4 class="footer-col-title">QUICK LINKS</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Home</a>
-                        <a href="home2.html">Home 2 — Premium</a>
-                        <a href="products.html">Our Products</a>
-                        <a href="services.html">Installation Services</a>
-                        <a href="gallery.html">Project Gallery</a>
-                        <a href="pricing.html">Pricing Plans</a>
-                        <a href="contact.html">Contact & Consultation</a>
-                    </div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="home2.html">Home 2 — Premium</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="services.html">Installation Services</a></li>
+                        <li><a href="gallery.html">Project Gallery</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="contact.html">Contact & Consultation</a></li>
+                    </ul>
                 </div>
 
+                <!-- Column 3: Resources -->
                 <div class="footer-col">
                     <h4 class="footer-col-title">RESOURCES</h4>
-                    <div class="footer-links">
-                        <a href="login.html">Client Sign In</a>
-                        <a href="signup.html">Create Account</a>
-                        <a href="coming-soon.html">Coming Soon</a>
-                        <a href="404.html">404 Error Page</a>
-                        <a href="coming-soon.html">FAQ</a>
-                        <a href="coming-soon.html">Blog</a>
-                    </div>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Sign In</a></li>
+                        <li><a href="signup.html">Create Account</a></li>
+                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                        <li><a href="404.html">404 Error Page</a></li>
+                        <li><a href="coming-soon.html">FAQ</a></li>
+                        <li><a href="coming-soon.html">Blog & Care Tips</a></li>
+                    </ul>
                 </div>
 
+                <!-- Column 4: Stay Updated Card -->
                 <div class="footer-col footer-col-newsletter">
                     <div class="footer-newsletter-card">
                         <h4 class="footer-newsletter-title">Stay Warm</h4>
@@ -273,12 +311,13 @@ function injectFooter() {
                 </div>
             </div>
 
+            <!-- Footer Bottom Bar -->
             <div class="footer-bottom">
                 <p class="footer-copyright">&copy; ${new Date().getFullYear()} FIREPLACE & HEARTH. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="coming-soon.html">Privacy</a>
-                    <a href="coming-soon.html">Terms</a>
-                    <a href="coming-soon.html">Cookies</a>
+                    <a href="coming-soon.html">Privacy Policy</a>
+                    <a href="coming-soon.html">Terms of Service</a>
+                    <a href="coming-soon.html">Cookie Policy</a>
                 </div>
             </div>
         </div>
@@ -490,12 +529,18 @@ function initHeroSlider() {
     startTimer();
 }
 
-/* ─── AUTH PAGE INIT ─────────────────────────────────── */
+/* ─── AUTH PAGE HELPERS ─────────────────────────────────── */
 function initAuthPage() {
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('hearth_theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) html.classList.add('dark');
+    if (localStorage.getItem('hearth_dir') === 'rtl') html.setAttribute('dir', 'rtl');
+
+    // Update icons
     document.querySelectorAll('.theme-icon-wrap').forEach(updateThemeIcon);
-    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
     document.querySelectorAll('.dir-label').forEach(el => {
-        el.textContent = isRTL ? 'RTL' : 'LTR';
+        el.textContent = html.getAttribute('dir') === 'rtl' ? 'RTL' : 'LTR';
     });
 }
 

@@ -1,109 +1,130 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" id="root-html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Something exciting is coming soon from Fireplace & Hearth. Stay tuned!">
-    <title>Coming Soon — Fireplace & Hearth</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="description" content="Something exciting is coming soon from Fireplace & Hearth. Subscribe for updates on new luxury fireplaces and hearth collections.">
+    <title>Coming Soon | Fireplace & Hearth — Premium Hearth & Fireplace Store</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="components.js" defer></script>
 </head>
-<body class="auth-page">
-    <!-- Top-right toggles -->
-    <div class="error-toggles">
-        <button onclick="toggleDir(event)" class="nav-icon-btn" title="Toggle Direction">
-            <span class="dir-label" style="font-size:0.65rem;font-weight:700;">LTR</span>
+<body class="fullscreen-page">
+
+<!-- Top Bar -->
+<div class="fullscreen-topbar">
+    <a href="index.html" class="nav-logo" aria-label="Fireplace & Hearth Home" style="text-decoration:none;">
+        <div class="nav-logo-icon" style="color:var(--clr-text);">
+            <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="65" width="70" height="15" rx="3" fill="currentColor" opacity="0.3"/>
+                <rect x="20" y="45" width="60" height="22" rx="4" fill="currentColor" opacity="0.2"/>
+                <path d="M50 20C46 30 35 40 35 55a15 15 0 0030 0c0-15-11-25-15-35z" fill="var(--clr-primary)" opacity="0.9"/>
+                <path d="M50 32c-2.5 6-8 12-8 20a8 8 0 0016 0c0-8-5.5-14-8-20z" fill="#E8A620" opacity="0.85"/>
+                <path d="M50 42c-1.5 3.5-4.5 7-4.5 11a4.5 4.5 0 009 0c0-4-3-7.5-4.5-11z" fill="#F5D76B"/>
+            </svg>
+        </div>
+        <div class="nav-logo-text">
+            <span class="brand-top">FIREPLACE</span>
+            <span class="brand-bottom">& Hearth</span>
+        </div>
+    </a>
+    <div style="display:flex;gap:0.5rem;">
+        <button onclick="toggleDir(event)" class="auth-toggle-btn" title="Toggle Direction">
+            <span class="dir-label" style="font-size:0.625rem;font-weight:600;">LTR</span>
         </button>
-        <button onclick="toggleTheme(event)" class="nav-icon-btn" title="Toggle Theme">
-            <span class="theme-icon-wrap"></span>
+        <button onclick="toggleTheme(event)" class="auth-toggle-btn" title="Toggle Theme" aria-label="Toggle dark mode">
+            <span class="theme-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
         </button>
     </div>
+</div>
 
-    <div class="coming-soon-page">
-        <div class="coming-soon-card">
-            <!-- Logo -->
-            <a href="index.html" class="auth-logo" style="margin-bottom:var(--space-2xl);">
-                <div class="nav-logo-icon" style="color:var(--clr-text);">
-                    <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="15" y="65" width="70" height="15" rx="3" fill="currentColor" opacity="0.3"/>
-                        <rect x="20" y="45" width="60" height="22" rx="4" fill="currentColor" opacity="0.2"/>
-                        <path d="M50 20C46 30 35 40 35 55a15 15 0 0030 0c0-15-11-25-15-35z" fill="var(--clr-primary)" opacity="0.9"/>
-                        <path d="M50 32c-2.5 6-8 12-8 20a8 8 0 0016 0c0-8-5.5-14-8-20z" fill="#E8A620" opacity="0.85"/>
-                        <path d="M50 42c-1.5 3.5-4.5 7-4.5 11a4.5 4.5 0 009 0c0-4-3-7.5-4.5-11z" fill="#F5D76B"/>
-                    </svg>
-                </div>
-                <div class="nav-logo-text">
-                    <span class="brand-top">FIREPLACE</span>
-                    <span class="brand-bottom">& Hearth</span>
-                </div>
-            </a>
+<!-- Content -->
+<div class="fullscreen-content">
+    <div style="position:relative;max-width:540px;width:100%;margin:0 auto;">
+        <!-- Decorative glow -->
+        <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:min(450px, 90vw);height:min(450px, 90vw);background:radial-gradient(circle,rgba(212,147,13,0.12),transparent 65%);border-radius:50%;pointer-events:none;"></div>
 
-            <div class="coming-soon-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        <div style="position:relative;z-index:2;">
+            <div class="section-label" style="justify-content:center;margin-bottom:1rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                Under Construction
             </div>
-
-            <h1>Something Warm Is Coming</h1>
-            <p>We're working on something exciting! This page is currently under construction. Stay tuned for updates.</p>
+            <h1 class="coming-title">Something Warm Is Coming</h1>
+            <p class="coming-desc">
+                We're crafting an exceptional hearth experience for your home. This page will be available soon. Subscribe to get notified!
+            </p>
 
             <!-- Countdown -->
             <div class="countdown-grid" id="countdown">
                 <div class="countdown-item">
-                    <div class="countdown-num" id="cd-days">42</div>
+                    <div class="countdown-value" id="cd-days">30</div>
                     <div class="countdown-label">Days</div>
                 </div>
                 <div class="countdown-item">
-                    <div class="countdown-num" id="cd-hours">08</div>
+                    <div class="countdown-value" id="cd-hours">14</div>
                     <div class="countdown-label">Hours</div>
                 </div>
                 <div class="countdown-item">
-                    <div class="countdown-num" id="cd-minutes">24</div>
+                    <div class="countdown-value" id="cd-mins">36</div>
                     <div class="countdown-label">Minutes</div>
                 </div>
                 <div class="countdown-item">
-                    <div class="countdown-num" id="cd-seconds">36</div>
+                    <div class="countdown-value" id="cd-secs">52</div>
                     <div class="countdown-label">Seconds</div>
                 </div>
             </div>
 
-            <!-- Notify -->
-            <form class="coming-soon-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you when this page goes live.'); this.reset();">
-                <input type="email" class="form-input" placeholder="Enter your email" required>
+            <!-- Subscribe -->
+            <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Subscribed! We will notify you when this page launches.'); this.reset();">
+                <input type="email" placeholder="your@email.com" required aria-label="Email address">
                 <button type="submit" class="btn btn-primary">Notify Me</button>
             </form>
 
-            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+            <div style="margin-top:1.5rem;">
+                <a href="index.html" class="link-primary" style="display:inline-flex;align-items:center;gap:0.35rem;font-weight:600;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Homepage
+                </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="coming-socials">
+                <a href="#" class="coming-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="#" class="coming-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" class="coming-social-link" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+                <a href="#" class="coming-social-link" aria-label="Pinterest"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="9" x2="12" y2="21"/><path d="M12 2a10 10 0 0 0-3.6 19.3c-.05-.8-.1-2.1.04-3 0 0 2.2-9.3 2.2-9.3s-.6-1.1-.6-2.8c0-2.6 1.5-4.6 3.4-4.6 1.6 0 2.4 1.2 2.4 2.6 0 1.6-1 4-1.6 6.3-.4 1.9 1 3.4 2.8 3.4 3.4 0 5.7-4.4 5.7-9.6 0-4-2.7-7-7.5-7-5.5 0-8.9 4.1-8.9 8.7 0 1.6.6 3.3 1.4 4.3.2.2.2.4.1.7-.1.4-.4 1.5-.4 1.7-.1.3-.3.4-.6.3-2.1-.9-3.1-3.3-3.1-6 0-4.4 3.8-9.8 11.2-9.8 6 0 9.9 4.3 9.9 9 0 6.1-3.4 10.7-8.3 10.7-1.7 0-3.2-.9-3.8-1.9l-1 4c-.4 1.4-1.4 3.1-2.1 4.2A10 10 0 1 0 12 2z"/></svg></a>
+            </div>
         </div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            initAuthPage();
+<script src="components.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        initAuthPage();
 
-            // Countdown timer
-            const launchDate = new Date();
-            launchDate.setDate(launchDate.getDate() + 42);
+        // 30 days countdown timer
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 30);
 
-            function updateCountdown() {
-                const now = new Date();
-                const diff = launchDate - now;
-                if (diff <= 0) return;
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            if (diff <= 0) return;
 
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-                document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-                document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
-            }
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
 
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
-    </script>
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    });
+</script>
 </body>
 </html>
