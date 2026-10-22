@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found — Fireplace & Hearth Store.">
+    <title>404 — Page Not Found | Fireplace & Hearth</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="components.js" defer></script>
+</head>
+<body class="auth-page">
+    <!-- Top-right toggles -->
+    <div class="error-toggles">
+        <button onclick="toggleDir(event)" class="nav-icon-btn" title="Toggle Direction">
+            <span class="dir-label" style="font-size:0.65rem;font-weight:700;">LTR</span>
+        </button>
+        <button onclick="toggleTheme(event)" class="nav-icon-btn" title="Toggle Theme">
+            <span class="theme-icon-wrap"></span>
+        </button>
+    </div>
+
+    <div class="error-page">
+        <div class="error-card">
+            <!-- Logo -->
+            <a href="index.html" class="auth-logo" style="margin-bottom:var(--space-2xl);">
+                <div class="nav-logo-icon" style="color:var(--clr-text);">
+                    <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="15" y="65" width="70" height="15" rx="3" fill="currentColor" opacity="0.3"/>
+                        <rect x="20" y="45" width="60" height="22" rx="4" fill="currentColor" opacity="0.2"/>
+                        <path d="M50 20C46 30 35 40 35 55a15 15 0 0030 0c0-15-11-25-15-35z" fill="var(--clr-primary)" opacity="0.9"/>
+                        <path d="M50 32c-2.5 6-8 12-8 20a8 8 0 0016 0c0-8-5.5-14-8-20z" fill="#E8A620" opacity="0.85"/>
+                        <path d="M50 42c-1.5 3.5-4.5 7-4.5 11a4.5 4.5 0 009 0c0-4-3-7.5-4.5-11z" fill="#F5D76B"/>
+                    </svg>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="brand-top">FIREPLACE</span>
+                    <span class="brand-bottom">& Hearth</span>
+                </div>
+            </a>
+
+            <div class="error-code">404</div>
+            <h2>The Fire Went Out Here</h2>
+            <p>The page you're looking for doesn't exist or has been moved. Let us guide you back to warmth.</p>
+            <div class="error-btns">
+                <a href="index.html" class="btn btn-primary btn-lg">Back to Home</a>
+                <a href="contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <script>document.addEventListener('DOMContentLoaded', initAuthPage);</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our gallery of completed fireplace installations — gas, wood, electric, indoor, and outdoor projects.">
+    <title>Gallery — Fireplace & Hearth</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="components.js" defer></script>
+</head>
+<body>
+    <div id="main-nav"></div>
+
+    <!-- ═══ Page Hero ═══ -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-label" style="justify-content:center;">Our Portfolio</span>
+            <h1>Project Gallery</h1>
+            <p>Explore our completed fireplace installations — from cozy indoor hearths to stunning outdoor living spaces. Every project is a testament to our craftsmanship.</p>
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-filter="all">All Projects</button>
+                <button class="gallery-tab" data-filter="indoor">Indoor</button>
+                <button class="gallery-tab" data-filter="outdoor">Outdoor</button>
+                <button class="gallery-tab" data-filter="modern">Modern</button>
+                <button class="gallery-tab" data-filter="traditional">Traditional</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Gallery Grid ═══ -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item scroll-reveal" data-category="indoor" onclick="openLightbox('assets/images/hero-fireplace.jpg','Luxury stone fireplace living room')">
+                    <img src="assets/images/hero-fireplace.jpg" alt="Luxury stone fireplace living room">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Grand Stone Hearth</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="modern" onclick="openLightbox('assets/images/gas-fireplace.jpg','Modern linear gas fireplace')">
+                    <img src="assets/images/gas-fireplace.jpg" alt="Modern linear gas fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Linear Gas Insert</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="traditional" onclick="openLightbox('assets/images/wood-fireplace.jpg','Traditional brick wood fireplace')">
+                    <img src="assets/images/wood-fireplace.jpg" alt="Traditional brick wood fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Rustic Brick Hearth</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="modern" onclick="openLightbox('assets/images/electric-fireplace.jpg','Contemporary electric fireplace')">
+                    <img src="assets/images/electric-fireplace.jpg" alt="Contemporary electric fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Wall-Mount Electric</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="traditional" onclick="openLightbox('assets/images/mantel-collection.jpg','Carved marble mantelpiece')">
+                    <img src="assets/images/mantel-collection.jpg" alt="Carved marble mantelpiece">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Marble Mantelpiece</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="indoor" onclick="openLightbox('assets/images/gallery-living.jpg','Double-sided see-through fireplace')">
+                    <img src="assets/images/gallery-living.jpg" alt="Double-sided see-through fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">See-Through Fireplace</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="outdoor" onclick="openLightbox('assets/images/gallery-outdoor.jpg','Outdoor patio fireplace')">
+                    <img src="assets/images/gallery-outdoor.jpg" alt="Outdoor patio fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Outdoor Stone Fireplace</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="indoor" onclick="openLightbox('assets/images/gallery-bedroom.jpg','Bedroom linear fireplace')">
+                    <img src="assets/images/gallery-bedroom.jpg" alt="Bedroom linear fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Bedroom Fireplace</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="modern" onclick="openLightbox('assets/images/fireplace-showroom.jpg','Showroom display')">
+                    <img src="assets/images/fireplace-showroom.jpg" alt="Showroom display">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Showroom Display</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="traditional" onclick="openLightbox('assets/images/fireplace-accessories.jpg','Fireplace accessories display')">
+                    <img src="assets/images/fireplace-accessories.jpg" alt="Fireplace accessories display">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Hearth Accessories</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="indoor" onclick="openLightbox('assets/images/hero2-fireplace.jpg','Mountain lodge fireplace')">
+                    <img src="assets/images/hero2-fireplace.jpg" alt="Mountain lodge fireplace">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Mountain Lodge Hearth</span></div>
+                </div>
+                <div class="gallery-item scroll-reveal" data-category="outdoor" onclick="openLightbox('assets/images/chimney-service.jpg','Chimney service')">
+                    <img src="assets/images/chimney-service.jpg" alt="Chimney inspection">
+                    <div class="gallery-item-overlay"><span class="gallery-item-title">Professional Service</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-banner">
+        <div class="container scroll-reveal">
+            <h2>Love What You See?</h2>
+            <p>Let us create the fireplace of your dreams. Schedule a free consultation and start your project today.</p>
+            <div class="hero-btns" style="justify-content:center;">
+                <a href="contact.html" class="btn btn-primary btn-lg">Start Your Project</a>
+                <a href="products.html" class="btn btn-secondary btn-lg">Browse Products</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="main-footer"></div>
+</body>
+</html>
