@@ -18,7 +18,7 @@ const ICONS = {
     facebook: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
     instagram: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
     youtube: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>',
-    pinterest: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="9" x2="12" y2="21"/><path d="M8 12a4 4 0 1 1 8 0c0 2.5-1.5 5-4 5a2.5 2.5 0 0 1-2.5-2.5"/><path d="M10.5 16.5L8 21"/></svg>',
+    pinterest: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 384 512" fill="currentColor" style="fill:currentColor;stroke:none;"><path fill="currentColor" stroke="none" d="M204 6.5C101.4 6.5 0 74.9 0 185.6 0 256 39.6 296 63.6 296c9.9 0 15.6-27.6 15.6-35.4 0-9.3-23.7-29.1-23.7-67.8 0-80.4 61.2-137.4 140.4-137.4 68.1 0 118.5 38.7 118.5 109.8 0 53.1-21.3 152.7-90.3 152.7-24.9 0-46.2-18-46.2-43.8 0-38.1 24.9-75 24.9-114.3 0-68.4-97.5-56.1-97.5 27 0 17.4 2.1 36.6 9.6 52.8-13.8 58.5-42.6 144.3-42.6 204.6 0 18.6 2.7 36.9 4.5 55.2 3.6 4.5 2.4 3 6.9 1.5 48.9-68.1 46.5-81.6 69-168.3 12.3 23.4 44.1 36.9 70.8 36.9 104.4 0 175.2-99 175.2-211.8C391.2 87.2 299.7 6.5 204 6.5z"/></svg>',
     mapPin: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
     phone: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
     mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
@@ -37,7 +37,7 @@ const LOGO_SVG = `<svg width="28" height="28" viewBox="0 0 100 100" fill="none" 
     <rect x="15" y="65" width="70" height="15" rx="3" fill="currentColor" opacity="0.3"/>
     <rect x="20" y="45" width="60" height="22" rx="4" fill="currentColor" opacity="0.2"/>
     <path d="M50 20C46 30 35 40 35 55a15 15 0 0030 0c0-15-11-25-15-35z" fill="var(--clr-primary)" opacity="0.9"/>
-    <path d="M50 32c-2.5 6-8 12-8 20a8 8 0 0016 0c0-8-5.5-14-8-20z" fill="var(--clr-secondary)" opacity="0.85"/>
+    <path d="M50 32c-2.5 6-8 12-8 20a8 8 0 0016 0c0-8-5.5-14-8-20z" fill="#E8A620" opacity="0.85"/>
     <path d="M50 42c-1.5 3.5-4.5 7-4.5 11a4.5 4.5 0 009 0c0-4-3-7.5-4.5-11z" fill="#F5D76B"/>
 </svg>`;
 
@@ -164,7 +164,6 @@ function injectNav() {
                     <span class="theme-icon-wrap">${isDark ? ICONS.sun : ICONS.moon}</span>
                 </button>
                 <!-- CTAs -->
-                <a href="contact.html" class="btn btn-secondary btn-sm">Get a Quote</a>
                 <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
                 <!-- Mobile Hamburger -->
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu(event)" aria-label="Open menu">
@@ -180,7 +179,6 @@ function injectNav() {
         <div class="mobile-menu" id="mobile-menu">
             ${mobileLinksHTML}
             <div class="mob-actions">
-                <a href="contact.html" class="btn btn-secondary w-full">Get a Quote</a>
                 <a href="login.html" class="btn btn-primary w-full">Sign In</a>
             </div>
             <div class="mob-toggles">
@@ -480,8 +478,190 @@ function closeLightbox() {
     }
 }
 
-/* ─── HERO SLIDER (HOME 2) ─────────────────────────── */
+/* ─── HERO SPLIT STUDIO & SLIDER (HOME 2) ───────────── */
 function initHeroSlider() {
+    // 1. Asymmetric Split Studio Showcase (Home 2)
+    const studioFrame = document.getElementById('studioHeroFrame');
+    if (studioFrame) {
+        const slides = studioFrame.querySelectorAll('.studio-frame-slide');
+        const selectorCards = document.querySelectorAll('.studio-selector-card');
+        const indicatorDots = studioFrame.querySelectorAll('.studio-indicator-dot');
+        const counterEl = document.getElementById('studioSwitcherCounter');
+        const prevBtn = document.getElementById('studioHeroPrev');
+        const nextBtn = document.getElementById('studioHeroNext');
+
+        if (slides.length) {
+            let currentIndex = 0;
+            let autoInterval = null;
+
+            function goToSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                currentIndex = index;
+
+                slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+                selectorCards.forEach((c, i) => {
+                    const isActive = i === currentIndex;
+                    c.classList.toggle('active', isActive);
+                    c.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+                indicatorDots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+
+                if (counterEl) {
+                    const num = String(currentIndex + 1).padStart(2, '0');
+                    const total = String(slides.length).padStart(2, '0');
+                    counterEl.textContent = `${num} / ${total}`;
+                }
+            }
+
+            function nextSlide() { goToSlide(currentIndex + 1); }
+            function prevSlide() { goToSlide(currentIndex - 1); }
+
+            selectorCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const idx = parseInt(card.getAttribute('data-slide'), 10);
+                    goToSlide(idx);
+                    resetTimer();
+                });
+            });
+
+            indicatorDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.getAttribute('data-slide'), 10);
+                    goToSlide(idx);
+                    resetTimer();
+                });
+            });
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                    resetTimer();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                    resetTimer();
+                });
+            }
+
+            // Touch swipe support
+            let touchStartX = 0;
+            studioFrame.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            studioFrame.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    if (diff < 0) {
+                        isRtl ? prevSlide() : nextSlide();
+                    } else {
+                        isRtl ? nextSlide() : prevSlide();
+                    }
+                    resetTimer();
+                }
+            }, { passive: true });
+
+            function startTimer() {
+                if (autoInterval) clearInterval(autoInterval);
+                autoInterval = setInterval(nextSlide, 5500);
+            }
+
+            function resetTimer() { startTimer(); }
+
+            studioFrame.addEventListener('mouseenter', () => { if (autoInterval) clearInterval(autoInterval); });
+            studioFrame.addEventListener('mouseleave', () => { startTimer(); });
+
+            startTimer();
+            return;
+        }
+    }
+
+    // 2. Atelier Stage Showcase fallback
+    const stageCard = document.getElementById('heroStageCard');
+    if (stageCard) {
+        const slides = stageCard.querySelectorAll('.hero-stage-slide');
+        const tabs = document.querySelectorAll('.hero-stage-tab');
+        const dots = stageCard.querySelectorAll('.hero-stage-dot');
+        const prevBtn = document.getElementById('heroStagePrev');
+        const nextBtn = document.getElementById('heroStageNext');
+
+        if (slides.length) {
+            let currentIndex = 0;
+            let autoInterval = null;
+
+            function goToSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                currentIndex = index;
+
+                slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+                tabs.forEach((t, i) => {
+                    const isActive = i === currentIndex;
+                    t.classList.toggle('active', isActive);
+                    t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+                dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+            }
+
+            function nextSlide() { goToSlide(currentIndex + 1); }
+            function prevSlide() { goToSlide(currentIndex - 1); }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const idx = parseInt(tab.getAttribute('data-slide'), 10);
+                    goToSlide(idx);
+                    resetTimer();
+                });
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.getAttribute('data-slide'), 10);
+                    goToSlide(idx);
+                    resetTimer();
+                });
+            });
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                    resetTimer();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                    resetTimer();
+                });
+            }
+
+            function startTimer() {
+                if (autoInterval) clearInterval(autoInterval);
+                autoInterval = setInterval(nextSlide, 5500);
+            }
+
+            function resetTimer() { startTimer(); }
+
+            stageCard.addEventListener('mouseenter', () => { if (autoInterval) clearInterval(autoInterval); });
+            stageCard.addEventListener('mouseleave', () => { startTimer(); });
+
+            startTimer();
+            return;
+        }
+    }
+
+    // 2. Legacy slider fallback
     const card = document.getElementById('heroSliderCard');
     if (!card) return;
 

@@ -13,62 +13,223 @@
 <body>
     <div id="main-nav"></div>
 
-    <!-- ═══ Hero Slider ═══ -->
-    <section class="hero-slider-section">
-        <div class="hero-slider-card" id="heroSliderCard">
-            <div class="hero-slide active">
-                <img src="assets/images/hero-fireplace.jpg" alt="Luxury stone fireplace" class="hero-slide-img">
-                <div class="hero-slide-overlay">
-                    <div class="container">
-                        <div class="hero-slide-content">
-                            <span class="section-label">Luxury Living</span>
-                            <h1>Where Fire Meets Artistry</h1>
-                            <p>Discover our signature collection of handcrafted fireplaces, each a masterpiece of design and engineering.</p>
-                            <div class="hero-btns">
-                                <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
-                                <a href="gallery.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,0.5);color:#fff;">Our Portfolio</a>
+    <!-- ═══ Asymmetric Split Studio Hero ═══ -->
+    <section class="hero-split-studio">
+        <div class="studio-ambient-glow glow-1"></div>
+        <div class="studio-ambient-glow glow-2"></div>
+        <div class="container">
+            <div class="studio-hero-grid scroll-reveal">
+                <!-- Left Editorial Column -->
+                <div class="studio-content-col">
+                    <div class="studio-pill-badge">
+                        <span class="studio-pulse-flame"></span>
+                        <span class="studio-badge-title">2026 Architectural Hearth Studio</span>
+                        <span class="studio-badge-sub">Bespoke Living Fire</span>
+                    </div>
+
+                    <h1 class="studio-title">
+                        Sculpting Warmth.<br>
+                        <span>Defining Architecture.</span>
+                    </h1>
+
+                    <p class="studio-lead">
+                        Bespoke fireplaces engineered for luxury residences. We harmonize pure European minimalism with master artisan stonework, transforming fire into the soulful focal point of your living sanctuary.
+                    </p>
+
+                    <!-- Interactive Flame Engine Switcher -->
+                    <div class="studio-switcher-box">
+                        <div class="switcher-box-header">
+                            <span class="switcher-label">Select Hearth Architecture</span>
+                            <span class="switcher-counter" id="studioSwitcherCounter">01 / 03</span>
+                        </div>
+                        <div class="studio-selector-grid" role="tablist">
+                            <button class="studio-selector-card active" data-slide="0" role="tab" aria-selected="true">
+                                <div class="selector-card-top">
+                                    <span class="selector-icon">🪵</span>
+                                    <span class="selector-tag">Heritage Wood</span>
+                                </div>
+                                <h4 class="selector-name">The Nordic Alpine</h4>
+                                <span class="selector-stat">65k BTU · Air-Wash Glass</span>
+                            </button>
+
+                            <button class="studio-selector-card" data-slide="1" role="tab" aria-selected="false">
+                                <div class="selector-card-top">
+                                    <span class="selector-icon">🔥</span>
+                                    <span class="selector-tag">Panoramic Gas</span>
+                                </div>
+                                <h4 class="selector-name">The Milano Linear 72"</h4>
+                                <span class="selector-stat">48k BTU · Flush Wall Mount</span>
+                            </button>
+
+                            <button class="studio-selector-card" data-slide="2" role="tab" aria-selected="false">
+                                <div class="selector-card-top">
+                                    <span class="selector-icon">⚡</span>
+                                    <span class="selector-tag">Smart 3D Vapor</span>
+                                </div>
+                                <h4 class="selector-name">The Solstice Prism</h4>
+                                <span class="selector-stat">Zero Emission · Safe Touch</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Call to Actions -->
+                    <div class="studio-cta-group">
+                        <a href="products.html" class="btn btn-primary btn-lg studio-btn-primary">
+                            <span>Explore 2026 Lookbook</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary btn-lg studio-btn-secondary">
+                            <span>Book Studio Consultation</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Metrics & Architect Social Proof -->
+                    <div class="studio-trust-bar">
+                        <div class="studio-avatars">
+                            <span class="avatar-ring avatar-1">AV</span>
+                            <span class="avatar-ring avatar-2">KL</span>
+                            <span class="avatar-ring avatar-3">MC</span>
+                            <span class="avatar-badge">★ 4.9</span>
+                        </div>
+                        <div class="studio-trust-text">
+                            <span class="trust-title">Trusted by 1,400+ Premier Architects & Homeowners</span>
+                            <span class="trust-meta">Certified NFI Master Hearth Builders · 10-Year Master Warranty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Showcase Column -->
+                <div class="studio-visual-col">
+                    <div class="studio-frame-wrapper" id="studioHeroFrame">
+                        <!-- Slide 0: Heritage Wood -->
+                        <div class="studio-frame-slide active" data-index="0">
+                            <img src="assets/images/hero2-fireplace.jpg" alt="Nordic Alpine Heritage Wood Hearth" class="studio-frame-img">
+                            <div class="studio-frame-scrim"></div>
+                            
+                            <!-- Floating Spec Card Top-Left -->
+                            <div class="studio-floating-spec">
+                                <div class="spec-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                </div>
+                                <div class="spec-text-block">
+                                    <span class="spec-label">Peak Heat Output</span>
+                                    <span class="spec-value">65,000 BTU / 87% EPA Clean</span>
+                                </div>
                             </div>
+
+                            <!-- Floating Award Card Bottom-Right -->
+                            <div class="studio-floating-quote">
+                                <div class="quote-header">
+                                    <span class="quote-stars">★★★★★</span>
+                                    <span class="quote-tag">Architectural Digest 2026</span>
+                                </div>
+                                <p class="quote-body">"The definitive masterpiece in modern mountain architecture."</p>
+                                <span class="quote-source">— Studio V Design, Aspen</span>
+                            </div>
+
+                            <!-- Bottom In-Frame Badge -->
+                            <div class="studio-frame-caption">
+                                <span class="caption-edition">Signature Hearth No. 01</span>
+                                <h3 class="caption-title">Nordic Alpine Grand Wood Hearth</h3>
+                                <p class="caption-desc">Hand-hewn granite surround with dual-baffle clean combustion.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 1: Panoramic Gas -->
+                        <div class="studio-frame-slide" data-index="1">
+                            <img src="assets/images/hero-fireplace.jpg" alt="Milano Panoramic Linear Gas Fireplace" class="studio-frame-img">
+                            <div class="studio-frame-scrim"></div>
+
+                            <div class="studio-floating-spec">
+                                <div class="spec-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                </div>
+                                <div class="spec-text-block">
+                                    <span class="spec-label">Direct Vent Flame</span>
+                                    <span class="spec-value">48,000 BTU / App Thermostat</span>
+                                </div>
+                            </div>
+
+                            <div class="studio-floating-quote">
+                                <div class="quote-header">
+                                    <span class="quote-stars">★★★★★</span>
+                                    <span class="quote-tag">Elle Décor Best Contemporary</span>
+                                </div>
+                                <p class="quote-body">"Flawless frameless glass lines with instantaneous warmth."</p>
+                                <span class="quote-source">— K. Lindstrom, Principal Architect</span>
+                            </div>
+
+                            <div class="studio-frame-caption">
+                                <span class="caption-edition">Signature Hearth No. 02</span>
+                                <h3 class="caption-title">Milano 72" Panoramic Gas Hearth</h3>
+                                <p class="caption-desc">Black reflective vitreous enamel with customizable LED driftwood.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Smart 3D Vapor -->
+                        <div class="studio-frame-slide" data-index="2">
+                            <img src="assets/images/electric-fireplace.jpg" alt="Solstice Prism Smart Electric Fireplace" class="studio-frame-img">
+                            <div class="studio-frame-scrim"></div>
+
+                            <div class="studio-floating-spec">
+                                <div class="spec-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                                </div>
+                                <div class="spec-text-block">
+                                    <span class="spec-label">3D Vapor Engine</span>
+                                    <span class="spec-value">Zero Emissions / Safe Touch Cold Flame</span>
+                                </div>
+                            </div>
+
+                            <div class="studio-floating-quote">
+                                <div class="quote-header">
+                                    <span class="quote-stars">★★★★★</span>
+                                    <span class="quote-tag">Smart Hearth Innovation</span>
+                                </div>
+                                <p class="quote-body">"Safe for penthouse living with uncompromised aesthetic fire realism."</p>
+                                <span class="quote-source">— Marcus Chen, Luxury High-Rise Developer</span>
+                            </div>
+
+                            <div class="studio-frame-caption">
+                                <span class="caption-edition">Signature Hearth No. 03</span>
+                                <h3 class="caption-title">Solstice Prism Smart 3D Electric</h3>
+                                <p class="caption-desc">Ultrasonic cold-flame vapor technology with acoustic timber crackle.</p>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Deck Controls -->
+                        <div class="studio-deck-controls">
+                            <button class="studio-deck-btn prev" id="studioHeroPrev" aria-label="Previous Hearth Style">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            </button>
+                            <div class="studio-deck-indicators">
+                                <span class="studio-indicator-dot active" data-slide="0"></span>
+                                <span class="studio-indicator-dot" data-slide="1"></span>
+                                <span class="studio-indicator-dot" data-slide="2"></span>
+                            </div>
+                            <button class="studio-deck-btn next" id="studioHeroNext" aria-label="Next Hearth Style">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3 Micro Feature Highlights under the Visual -->
+                    <div class="studio-feature-strip">
+                        <div class="feature-strip-chip">
+                            <span class="chip-icon">📐</span>
+                            <span class="chip-text">Custom Masonry Fit</span>
+                        </div>
+                        <div class="feature-strip-chip">
+                            <span class="chip-icon">🛡️</span>
+                            <span class="chip-text">10-Yr Hearth Warranty</span>
+                        </div>
+                        <div class="feature-strip-chip">
+                            <span class="chip-icon">🌱</span>
+                            <span class="chip-text">Eco Clean-Burn Standard</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="hero-slide">
-                <img src="assets/images/hero2-fireplace.jpg" alt="Mountain lodge fireplace" class="hero-slide-img">
-                <div class="hero-slide-overlay">
-                    <div class="container">
-                        <div class="hero-slide-content">
-                            <span class="section-label">Timeless Warmth</span>
-                            <h1>Crafted for the Moments That Matter</h1>
-                            <p>From rustic retreats to contemporary estates — we create the heart of your home.</p>
-                            <div class="hero-btns">
-                                <a href="services.html" class="btn btn-primary btn-lg">Our Services</a>
-                                <a href="contact.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,0.5);color:#fff;">Free Consultation</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-slide">
-                <img src="assets/images/gallery-living.jpg" alt="Contemporary fireplace" class="hero-slide-img">
-                <div class="hero-slide-overlay">
-                    <div class="container">
-                        <div class="hero-slide-content">
-                            <span class="section-label">Modern Elegance</span>
-                            <h1>Redefining the Modern Hearth</h1>
-                            <p>Cutting-edge designs that seamlessly blend technology with timeless aesthetics.</p>
-                            <div class="hero-btns">
-                                <a href="products.html" class="btn btn-primary btn-lg">Explore Collection</a>
-                                <a href="pricing.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,0.5);color:#fff;">View Pricing</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-slider-dots">
-            <button class="hero-slider-dot active" data-slide="0" aria-label="Slide 1"></button>
-            <button class="hero-slider-dot" data-slide="1" aria-label="Slide 2"></button>
-            <button class="hero-slider-dot" data-slide="2" aria-label="Slide 3"></button>
         </div>
     </section>
 
@@ -210,7 +371,7 @@
                     </div>
                     <p class="testimonial-text">"The premium gas fireplace we purchased exceeded every expectation. It's become the soul of our home. The installation team was incredibly professional."</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">EP</div>
+                        <img src="assets/images/client-emma.jpg" alt="Emma Patterson" class="testimonial-avatar" width="48" height="48" loading="lazy">
                         <div>
                             <div class="testimonial-name">Emma Patterson</div>
                             <div class="testimonial-role">Architect, Portland</div>
@@ -227,7 +388,7 @@
                     </div>
                     <p class="testimonial-text">"From the showroom visit to the final installation, every step was seamless. The custom mantel they designed is absolutely stunning."</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">JW</div>
+                        <img src="assets/images/client-james.jpg" alt="James Wheeler" class="testimonial-avatar" width="48" height="48" loading="lazy">
                         <div>
                             <div class="testimonial-name">James Wheeler</div>
                             <div class="testimonial-role">Homeowner, Denver</div>
@@ -244,7 +405,7 @@
                     </div>
                     <p class="testimonial-text">"Their outdoor fireplace transformed our backyard into an evening paradise. We use it year-round and the quality has held up perfectly through all seasons."</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">LB</div>
+                        <img src="assets/images/client-laura.jpg" alt="Laura Bennett" class="testimonial-avatar" width="48" height="48" loading="lazy">
                         <div>
                             <div class="testimonial-name">Laura Bennett</div>
                             <div class="testimonial-role">Homeowner, Seattle</div>
@@ -255,29 +416,6 @@
         </div>
     </section>
 
-    <!-- ═══ Stats ═══ -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid scroll-reveal">
-                <div class="stat-item">
-                    <div class="counter-num" data-target="5000" data-suffix="">0</div>
-                    <p>Sq Ft Showroom</p>
-                </div>
-                <div class="stat-item">
-                    <div class="counter-num" data-target="60" data-suffix="+">0</div>
-                    <p>Live Burning Displays</p>
-                </div>
-                <div class="stat-item">
-                    <div class="counter-num" data-target="25" data-suffix="+">0</div>
-                    <p>Premium Brands</p>
-                </div>
-                <div class="stat-item">
-                    <div class="counter-num" data-target="100" data-suffix="%">0</div>
-                    <p>Satisfaction Guarantee</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ═══ CTA ═══ -->
     <section class="cta-banner">
