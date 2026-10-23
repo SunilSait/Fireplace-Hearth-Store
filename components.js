@@ -388,7 +388,7 @@ function initProductTabs() {
             let lastVisibleItem = null;
 
             items.forEach(item => {
-                item.classList.remove('is-last-centered');
+                item.classList.remove('is-last-centered', 'is-last-centered-3col', 'is-last-centered-2col');
                 if (target === 'all' || !target || item.dataset.category === target) {
                     item.style.display = 'flex';
                     visibleCount++;
@@ -398,8 +398,13 @@ function initProductTabs() {
                 }
             });
 
-            if (visibleCount % 3 === 1 && lastVisibleItem) {
-                lastVisibleItem.classList.add('is-last-centered');
+            if (lastVisibleItem) {
+                if (visibleCount % 3 === 1) {
+                    lastVisibleItem.classList.add('is-last-centered', 'is-last-centered-3col');
+                }
+                if (visibleCount % 2 === 1) {
+                    lastVisibleItem.classList.add('is-last-centered-2col');
+                }
             }
         }
     }
@@ -837,6 +842,297 @@ function initGalleryFilter() {
     filterGallery('all');
 }
 
+/* ─── THEME-INSPIRED HEARTH EMBERS & ATMOSPHERE ANIMATION ─── */
+function initHearthEmbers() {
+    const canvas = document.getElementById('hearthEmbersCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const heroSection = canvas.closest('.hero-slider-section') || canvas.parentElement;
+    const cursorGlow = document.getElementById('hearthCursorGlow');
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let embers = [];
+    let animationFrameId = null;
+    let isVisible = true;
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let targetMouseX = -1000;
+    let targetMouseY = -1000;
+    let isHovering = false;
+
+    // Check prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    function isDarkMode() {
+        return document.body.classList.contains('dark') || document.documentElement.classList.contains('dark');
+    }
+
+    // Color palettes for fireplace embers:
+    // Light Mode: High-contrast rich fire tones (vivid fiery amber, burning orange, hearth crimson, deep gold)
+    const lightPalette = [
+        { r: 235, g: 85,  b: 25 },  // Fiery Ember Orange #EB5519
+        { r: 215, g: 110, b: 15 },  // Rich Hearth Amber #D76E0F
+        { r: 205, g: 45,  b: 15 },  // Deep Coal Crimson #CD2D0F
+        { r: 212, g: 147, b: 13 },  // Brand Primary Gold #D4930D
+        { r: 245, g: 140, b: 20 },  // Flame Glow #F58C14
+        { r: 185, g: 60,  b: 10 }   // Toasted Charcoal Amber
+    ];
+
+    // Dark Mode: Incandescent luminous fire tones (molten core, bright neon flame, golden sparks)
+    const darkPalette = [
+        { r: 255, g: 120, b: 40 },  // Radiant Flame Orange #FF7828
+        { r: 254, g: 215, b: 102 }, // Luminous Molten Gold #FED766
+        { r: 255, g: 70,  b: 25 },  // Hot Hearth Red #FF4619
+        { r: 245, g: 170, b: 35 },  // Warm Amber Glow #F5AA23
+        { r: 255, g: 195, b: 90 },  // Incandescent Yellow #FFC35A
+        { r: 255, g: 240, b: 180 }  // White-Hot Spark Core #FFF0B4
+    ];
+
+    class Ember {
+        constructor(isInitial) {
+            this.isCrackle = Math.random() < 0.25; // 25% are crackle micro-sparks
+            this.reset(isInitial);
+        }
+
+        reset(isInitial) {
+            // Embers originate primarily from the hearth fire area (center and right),
+            // with ambient sparks across the entire width
+            const hearthBias = Math.random();
+            if (hearthBias > 0.3) {
+                this.x = width * 0.35 + Math.random() * (width * 0.6);
+            } else {
+                this.x = Math.random() * width;
+            }
+
+            this.y = isInitial ? Math.random() * height : height + 10 + Math.random() * 30;
+
+            if (this.isCrackle) {
+                this.radius = 0.9 + Math.random() * 1.3;
+                this.speedY = -(1.2 + Math.random() * 1.8);
+                this.speedX = (Math.random() - 0.52) * 1.1;
+                this.swaySpeed = 0.04 + Math.random() * 0.06;
+                this.swayRadius = 0.5 + Math.random() * 0.8;
+                this.baseAlpha = 0.65 + Math.random() * 0.35;
+            } else {
+                this.radius = 1.6 + Math.random() * 2.6;
+                this.speedY = -(0.55 + Math.random() * 0.95);
+                this.speedX = (Math.random() - 0.54) * 0.6; // Slight drift towards left (convection current)
+                this.swaySpeed = 0.012 + Math.random() * 0.025;
+                this.swayRadius = 0.8 + Math.random() * 1.5;
+                this.baseAlpha = 0.6 + Math.random() * 0.4;
+            }
+
+            this.swayAngle = Math.random() * Math.PI * 2;
+            this.flickerSpeed = 0.06 + Math.random() * 0.1;
+            this.flickerAngle = Math.random() * Math.PI * 2;
+            this.paletteIndex = Math.floor(Math.random() * 6);
+            this.alpha = 0;
+        }
+
+        update() {
+            this.swayAngle += this.swaySpeed;
+            this.flickerAngle += this.flickerSpeed;
+
+            // Buoyant upward convection + gentle chimney sway
+            this.y += this.speedY;
+            this.x += this.speedX + Math.sin(this.swayAngle) * this.swayRadius;
+
+            // Interactive thermal updraft and deflection from cursor
+            if (mouseX > -500 && mouseY > -500) {
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const interactRadius = 130;
+                if (dist < interactRadius && dist > 0) {
+                    const force = (1 - dist / interactRadius) * 2.2;
+                    this.x += (dx / dist) * force * 1.3;
+                    this.y += (dy / dist) * force * 0.7;
+                }
+            }
+
+            // Alpha curve: smooth fade-in from hearth, natural flicker, cooling fade-out near top
+            const progress = this.y / height;
+            let fade = 1;
+            if (progress > 0.88) {
+                fade = (1 - progress) / 0.12;
+            } else if (progress < 0.18) {
+                fade = progress / 0.18;
+            }
+
+            const flicker = 0.8 + Math.sin(this.flickerAngle) * 0.2;
+            this.alpha = Math.max(0, Math.min(1, this.baseAlpha * fade * flicker));
+
+            // Reset when ember reaches top or exceeds boundaries
+            if (this.y < -25 || this.x < -60 || this.x > width + 60) {
+                this.reset(false);
+            }
+        }
+
+        draw(c, isDark) {
+            if (this.alpha <= 0.02) return;
+
+            const palette = isDark ? darkPalette : lightPalette;
+            const p = palette[this.paletteIndex % palette.length];
+
+            c.save();
+            c.globalAlpha = this.alpha;
+
+            // Outer soft flame halo
+            const shadowAlpha = isDark ? Math.min(1, this.alpha * 1.1) : this.alpha * 0.75;
+            c.shadowColor = 'rgba(' + p.r + ',' + p.g + ',' + p.b + ',' + shadowAlpha + ')';
+            c.shadowBlur = this.radius * (isDark ? 5.5 : 4.0);
+
+            c.fillStyle = 'rgb(' + p.r + ',' + p.g + ',' + p.b + ')';
+            c.beginPath();
+            c.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            c.fill();
+
+            // Inner hot core
+            c.shadowBlur = 0;
+            if (isDark) {
+                c.fillStyle = '#FFFFFF';
+                c.globalAlpha = Math.min(1, this.alpha * 0.85);
+                c.beginPath();
+                c.arc(this.x, this.y, this.radius * 0.5, 0, Math.PI * 2);
+                c.fill();
+            } else {
+                c.fillStyle = 'rgba(255, 248, 220, 0.95)';
+                c.globalAlpha = this.alpha * 0.8;
+                c.beginPath();
+                c.arc(this.x, this.y, this.radius * 0.45, 0, Math.PI * 2);
+                c.fill();
+            }
+
+            c.restore();
+        }
+    }
+
+    function createEmbers() {
+        const count = Math.min(80, Math.max(38, Math.floor(width / 22)));
+        embers = [];
+        for (let i = 0; i < count; i++) {
+            embers.push(new Ember(true));
+        }
+    }
+
+    function resize() {
+        if (!heroSection) return;
+        const rect = heroSection.getBoundingClientRect();
+        width = Math.floor(rect.width) || window.innerWidth;
+        height = Math.floor(rect.height) || 600;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+
+        createEmbers();
+    }
+
+    function animate() {
+        if (!isVisible) {
+            animationFrameId = null;
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        const isDark = isDarkMode();
+
+        // Smooth cursor glow interpolation
+        if (cursorGlow) {
+            if (isHovering && targetMouseX > -500) {
+                mouseX += (targetMouseX - mouseX) * 0.2;
+                mouseY += (targetMouseY - mouseY) * 0.2;
+                cursorGlow.style.left = mouseX + 'px';
+                cursorGlow.style.top = mouseY + 'px';
+                cursorGlow.style.opacity = '1';
+            } else {
+                cursorGlow.style.opacity = '0';
+                mouseX = -1000;
+                mouseY = -1000;
+            }
+        }
+
+        for (let i = 0; i < embers.length; i++) {
+            embers[i].update();
+            embers[i].draw(ctx, isDark);
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function start() {
+        if (!animationFrameId) {
+            animationFrameId = requestAnimationFrame(animate);
+        }
+    }
+
+    // Interactive mouse tracking
+    if (heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            targetMouseX = e.clientX - rect.left;
+            targetMouseY = e.clientY - rect.top;
+            if (!isHovering) {
+                mouseX = targetMouseX;
+                mouseY = targetMouseY;
+            }
+            isHovering = true;
+        });
+
+        heroSection.addEventListener('mouseenter', () => {
+            isHovering = true;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            isHovering = false;
+            targetMouseX = -1000;
+            targetMouseY = -1000;
+        });
+    }
+
+    // Pause animation when scrolled off-screen for 0% CPU consumption
+    if ('IntersectionObserver' in window && heroSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                isVisible = entry.isIntersecting;
+                if (isVisible) {
+                    start();
+                } else if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+            });
+        }, { threshold: 0.05 });
+        observer.observe(heroSection);
+    }
+
+    // Window resize debounced
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            resize();
+        }, 120);
+    });
+
+    resize();
+    window.addEventListener('load', resize, { once: true });
+    start();
+}
+
 /* ─── MAIN INIT ────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
     injectNav();
@@ -847,6 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProductTabs();
     initCounters();
     initHeroSlider();
+    initHearthEmbers();
     initGalleryFilter();
     document.querySelectorAll('.theme-icon-wrap').forEach(updateThemeIcon);
 });

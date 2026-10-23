@@ -15,6 +15,16 @@
 
     <!-- ═══ Hero Split Slider (3 Slides, 2 Images Each, 5s Auto-Transition) ═══ -->
     <section class="hero-split hero-slider-section" id="heroSliderSection">
+        <!-- Theme-Inspired Hearth Ambience & Animated Embers -->
+        <div class="hearth-ambient-glow" aria-hidden="true">
+            <div class="hearth-glow-orb hearth-glow-orb-1"></div>
+            <div class="hearth-glow-orb hearth-glow-orb-2"></div>
+            <div class="hearth-glow-orb hearth-glow-orb-3"></div>
+            <div class="hearth-glow-line"></div>
+            <div class="hearth-cursor-glow" id="hearthCursorGlow"></div>
+        </div>
+        <canvas id="hearthEmbersCanvas" class="hearth-embers-canvas" aria-hidden="true"></canvas>
+
         <div class="container">
             <div class="hero-slider-container">
                 <!-- Slide 1: Warmth & Elegance (Luxury Custom Hearths) -->
@@ -278,7 +288,7 @@
                     <div class="idx-install-card-body">
                         <span class="idx-install-card-num">01</span>
                         <strong>Site Assessment</strong>
-                        <p>Chimney survey, flue inspection and full measurements taken on-site by our certified engineers.</p>
+                        <p>Chimney survey, flue inspection and full measurements taken on-site by our engineers.</p>
                     </div>
                 </div>
                 <div class="idx-install-card">
@@ -288,7 +298,7 @@
                     <div class="idx-install-card-body">
                         <span class="idx-install-card-num">02</span>
                         <strong>Custom Fitting</strong>
-                        <p>Your chosen fireplace is precision-fitted by our master technicians using factory-approved methods.</p>
+                        <p>Your chosen fireplace is precision-fitted by our master technicians.</p>
                     </div>
                 </div>
                 <div class="idx-install-card">
@@ -334,41 +344,41 @@
             <div class="idx-mantel-materials-grid scroll-reveal">
                 <div class="idx-mat-card">
                     <span class="idx-mat-tag">Italy</span>
-                    <h4>Carrara Marble</h4>
-                    <span class="idx-mat-style">Classical &amp; French Neoclassical</span>
-                    <p>Hand-carved Tuscan marble with subtle grey veining. Delivers exceptional heat resistance and enduring classical refinement.</p>
+                    <h4>Carrara White Marble</h4>
+                    <span class="idx-mat-style">Classical Neoclassical</span>
+                    <p>Hand-carved Tuscan marble with subtle grey veining. Offers exceptional heat honed resistance and timeless classical beauty.</p>
                     <div class="idx-mat-finish"><span>Finish:</span> Honed Satin</div>
                 </div>
 
                 <div class="idx-mat-card">
                     <span class="idx-mat-tag">Spain</span>
-                    <h4>Black Architectural Stone</h4>
+                    <h4>Black Basalt Stone</h4>
                     <span class="idx-mat-style">Contemporary Minimalist</span>
-                    <p>Deep midnight basalt with fine calcite quartz streaks. Creates a bold monolithic focal point for modern minimalist interiors.</p>
+                    <p>Deep midnight volcanic basalt with fine quartz veining. Creates a monolithic architectural focal point for modern spaces.</p>
                     <div class="idx-mat-finish"><span>Finish:</span> Brushed Basalt</div>
                 </div>
 
                 <div class="idx-mat-card">
-                    <span class="idx-mat-tag">UK &amp; France</span>
+                    <span class="idx-mat-tag">Britain</span>
                     <h4>Reclaimed English Oak</h4>
-                    <span class="idx-mat-style">Modern Farmhouse &amp; Rustic</span>
-                    <p>Centuries-old salvage timber finished in organic beeswax. Preserves authentic natural grain, historic knots, and rustic warmth.</p>
+                    <span class="idx-mat-style">Modern Rustic Farmhouse</span>
+                    <p>Centuries-old salvage timber conditioned in organic beeswax. Preserves authentic historic grain and natural hearth warmth.</p>
                     <div class="idx-mat-finish"><span>Finish:</span> Natural Hand-Wax</div>
                 </div>
 
                 <div class="idx-mat-card">
-                    <span class="idx-mat-tag">Birmingham</span>
-                    <h4>Polished Brass &amp; Bronze</h4>
+                    <span class="idx-mat-tag">England</span>
+                    <h4>Polished Cast Brass</h4>
                     <span class="idx-mat-style">Art Deco &amp; Mid-Century</span>
-                    <p>Solid heavy-gauge architectural metal surrounds. Reflects ambient firelight and develops an authentic living golden patina.</p>
+                    <p>Heavy-gauge architectural brass reflecting ambient flame light. Develops an authentic living golden luster over generations.</p>
                     <div class="idx-mat-finish"><span>Finish:</span> Brushed Patina</div>
                 </div>
 
                 <div class="idx-mat-card">
                     <span class="idx-mat-tag">Sheffield</span>
                     <h4>Heritage Cast Iron</h4>
-                    <span class="idx-mat-style">Victorian &amp; Georgian Era</span>
-                    <p>Traditional sand-cast iron in historic architectural motifs. Delivers peerless heat retention, radiating warmth for hours.</p>
+                    <span class="idx-mat-style">Victorian &amp; The Georgian</span>
+                    <p>Traditional sand-cast iron with classical period motifs. Delivers peerless great radiant heat retention for enduring fireside comfort.</p>
                     <div class="idx-mat-finish"><span>Finish:</span> Matte Iron Black</div>
                 </div>
             </div>
@@ -571,7 +581,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
-                    <p class="testimonial-text">"The team transformed our living room with a stunning stone fireplace. From design to installation, every detail was perfect. We couldn't be happier with the result!"</p>
+                    <p class="testimonial-text">"The team transformed our living room with a stunning stone fireplace. From design to installation, detail was perfect. We couldn't be happier with the results!"</p>
                     <div class="testimonial-author">
                         <img src="assets/images/client-michael.jpg" alt="Michael Roberts" class="testimonial-avatar" width="48" height="48" loading="lazy">
                         <div>
