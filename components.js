@@ -116,6 +116,7 @@ function injectNav() {
     const links = [
         { href: 'index.html', label: 'Home' },
         { href: 'home2.html', label: 'Home 2' },
+        { href: 'about.html', label: 'About' },
         { href: 'products.html', label: 'Products' },
         { href: 'services.html', label: 'Services' },
         { href: 'gallery.html', label: 'Gallery' },
@@ -275,6 +276,7 @@ function injectFooter() {
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="home2.html">Home 2 — Premium</a></li>
+                        <li><a href="about.html">About Our Guild</a></li>
                         <li><a href="products.html">Our Products</a></li>
                         <li><a href="services.html">Installation Services</a></li>
                         <li><a href="gallery.html">Project Gallery</a></li>
@@ -478,8 +480,94 @@ function closeLightbox() {
     }
 }
 
-/* ─── HERO SPLIT STUDIO & SLIDER (HOME 2) ───────────── */
+/* ─── HERO SPLIT STUDIO & SLIDER ──────────────────────── */
 function initHeroSlider() {
+    // 0. Primary Hero Split Slider (index.html) - 3 slides, 2 images each, auto-switch every 5 seconds
+    const heroSliderSec = document.getElementById('heroSliderSection');
+    if (heroSliderSec) {
+        const slides = heroSliderSec.querySelectorAll('.hero-slide');
+        const dots = heroSliderSec.querySelectorAll('.hero-dot');
+        const prevBtn = heroSliderSec.querySelector('#heroPrevBtn');
+        const nextBtn = heroSliderSec.querySelector('#heroNextBtn');
+
+        if (slides.length) {
+            let currentIndex = 0;
+            let autoInterval = null;
+
+            function goToSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                currentIndex = index;
+
+                slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+                dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+            }
+
+            function nextSlide() { goToSlide(currentIndex + 1); }
+            function prevSlide() { goToSlide(currentIndex - 1); }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.getAttribute('data-index'), 10);
+                    goToSlide(idx);
+                    resetTimer();
+                });
+            });
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                    resetTimer();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                    resetTimer();
+                });
+            }
+
+            function startTimer() {
+                if (autoInterval) clearInterval(autoInterval);
+                autoInterval = setInterval(nextSlide, 5000); // Switch every 5 seconds
+            }
+
+            function resetTimer() { startTimer(); }
+
+            heroSliderSec.addEventListener('mouseenter', () => {
+                if (autoInterval) clearInterval(autoInterval);
+            });
+            heroSliderSec.addEventListener('mouseleave', () => {
+                startTimer();
+            });
+
+            // Touch swipe support for mobile
+            let touchStartX = 0;
+            heroSliderSec.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            heroSliderSec.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    if (diff < 0) {
+                        isRtl ? prevSlide() : nextSlide();
+                    } else {
+                        isRtl ? nextSlide() : prevSlide();
+                    }
+                    resetTimer();
+                }
+            }, { passive: true });
+
+            startTimer();
+        }
+    }
+
     // 1. Asymmetric Split Studio Showcase (Home 2)
     const studioFrame = document.getElementById('studioHeroFrame');
     if (studioFrame) {
