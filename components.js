@@ -45,6 +45,25 @@ const LOGO_SVG = `<svg width="28" height="28" viewBox="0 0 100 100" fill="none" 
 const GOOGLE_SVG = `<i class="fa-brands fa-google" style="font-size:18px;"></i>`;
 const APPLE_SVG = `<i class="fa-brands fa-apple" style="font-size:19px;"></i>`;
 
+/* ─── SCROLL RESTORATION & VIEWPORT CONTROL ────────────── */
+(function initScrollRestoration() {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+    }
+    window.addEventListener('pageshow', function() {
+        if (!window.location.hash) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            if (document.documentElement) document.documentElement.scrollTop = 0;
+            if (document.body) document.body.scrollTop = 0;
+        }
+    });
+})();
+
 /* ─── THEME & DIRECTION ─────────────────────────────────── */
 (function initThemeDir() {
     const html = document.documentElement;
@@ -204,6 +223,35 @@ function injectNav() {
             }
         });
     }
+
+    // Ensure clicking navigation links (sidebar or header) always begins from top of target page
+    const allNavLinks = el.querySelectorAll('.nav-link, .mob-link');
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (!href) return;
+
+            const currentPage = location.pathname.split('/').pop() || 'index.html';
+            const targetPage = href.split('#')[0].split('?')[0];
+            const hasHash = href.includes('#');
+
+            // If navigating to the current page without an anchor hash, smooth scroll to top
+            if ((targetPage === currentPage || (targetPage === 'index.html' && currentPage === '')) && !hasHash) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }
+
+            // Always dismiss mobile menu drawer on link click
+            const menu = document.getElementById('mobile-menu');
+            const backdrop = document.getElementById('mobile-backdrop');
+            const iconEl = document.querySelector('.mobile-menu-icon');
+            if (menu && menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('open');
+                if (iconEl) iconEl.innerHTML = ICONS.menu;
+            }
+        });
+    });
 }
 
 function toggleMobileMenu(e) {
@@ -1135,6 +1183,11 @@ function initHearthEmbers() {
 
 /* ─── MAIN INIT ────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+    if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+    }
     injectNav();
     injectFooter();
     injectScrollTop();

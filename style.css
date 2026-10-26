@@ -1,4 +1,4 @@
-﻿/* ===== FIREPLACE & HEARTH STORE — DESIGN SYSTEM ===== */
+/* ===== FIREPLACE & HEARTH STORE — DESIGN SYSTEM ===== */
 
 /* ─── Google Fonts ──────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
@@ -378,9 +378,12 @@ p,
 .nav-icon-btn {
     width: 2.25rem;
     height: 2.25rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
     border-radius: var(--radius-sm);
     background: var(--clr-surface);
     border: 1px solid var(--clr-border);
@@ -390,6 +393,8 @@ p,
     transition: var(--transition-fast);
     font-family: var(--ff-body);
     font-weight: 600;
+    flex-shrink: 0;
+    vertical-align: middle;
 }
 
 .nav-icon-btn:hover {
@@ -397,12 +402,29 @@ p,
     color: var(--clr-primary);
 }
 
-.nav-icon-btn svg {
+.theme-icon-wrap,
+.dir-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-icon-btn svg,
+.auth-toggle-btn svg,
+.theme-icon-wrap svg {
     width: 1rem;
     height: 1rem;
+    display: block;
+    margin: auto;
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
+    vertical-align: middle;
 }
 
 /* Mobile Nav */
@@ -840,7 +862,12 @@ p,
 }
 
 .text-center { text-align: center; }
-.text-center .section-subtitle { margin: 0 auto; }
+.text-center .section-subtitle { 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-wrap: balance;
+}
 .text-center .section-label,
 .section-label[style*="justify-content:center"],
 .section-label[style*="justify-content: center"] { justify-content: center; }
@@ -853,6 +880,17 @@ p,
     height: 2px;
     background: var(--clr-primary);
     border-radius: 2px;
+}
+
+[dir="rtl"] .text-center,
+[dir="rtl"] .text-center .section-subtitle,
+[dir="rtl"] .text-center .section-title,
+[dir="rtl"] .idx-luxury-header,
+[dir="rtl"] .idx-luxury-header .section-subtitle,
+[dir="rtl"] .idx-luxury-header .section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -5240,6 +5278,18 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     right: 24px;
 }
 
+[dir="rtl"] .contact-map-wrapper .leaflet-top.leaflet-right,
+[dir="rtl"] .contact-live-map .leaflet-top.leaflet-right,
+[dir="rtl"] #contact-live-map .leaflet-top.leaflet-right {
+    right: auto !important;
+    left: 18px !important;
+}
+[dir="rtl"] .contact-map-wrapper .leaflet-right .leaflet-control,
+[dir="rtl"] .contact-live-map .leaflet-right .leaflet-control {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
 .map-card-header {
     display: flex;
     align-items: center;
@@ -5589,9 +5639,12 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 .auth-toggle-btn {
     width: 2.25rem;
     height: 2.25rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
     border-radius: var(--radius-md);
     background: var(--clr-surface);
     border: 1px solid var(--clr-border);
@@ -5599,6 +5652,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     font-size: 0.75rem;
     cursor: pointer;
     transition: var(--transition-fast);
+    flex-shrink: 0;
+    vertical-align: middle;
 }
 
 .auth-toggle-btn:hover {
@@ -7437,6 +7492,29 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     text-align: center;
     max-width: 780px;
     margin: 0 auto 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.idx-luxury-header .section-label {
+    justify-content: center;
+}
+.idx-luxury-header .section-label::before {
+    display: none;
+}
+.idx-luxury-header .section-label::after {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: var(--clr-primary);
+    border-radius: 2px;
+}
+.idx-luxury-header .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 680px;
+    text-wrap: balance;
 }
 .idx-luxury-showcase-grid {
     display: grid;
@@ -9434,6 +9512,13 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     color: var(--clr-text-muted);
     opacity: 0.16;
     line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+[dir="rtl"] .abt-pillar-watermark {
+    right: auto;
+    left: 1.25rem;
 }
 .abt-pillar-icon {
     width: 50px;
@@ -9447,6 +9532,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     justify-content: center;
     font-size: 1.25rem;
     margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 2;
 }
 .abt-pillar-card h4 {
     font-size: 1.05rem;
@@ -9599,10 +9686,11 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     display: block;
 }
 .abt-vault-swatches-strip {
-    display: flex;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem 1rem;
     margin-top: 1.5rem;
-    flex-wrap: wrap;
+    max-width: 480px;
 }
 .abt-swatch-badge {
     display: flex;
@@ -9611,10 +9699,12 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     background: var(--clr-surface-alt);
     border: 1px solid var(--clr-border);
     border-radius: 10px;
-    padding: 0.55rem 0.9rem;
+    padding: 0.6rem 0.95rem;
     font-size: 0.78rem;
     color: var(--clr-text);
     font-weight: 600;
+    width: 100%;
+    box-sizing: border-box;
 }
 .abt-swatch-circle {
     width: 16px;
@@ -9652,11 +9742,15 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     position: absolute;
     top: 24px;
     left: 50%;
-    width: 100%;
+    width: calc(100% + 1.5rem);
     height: 2px;
     background: var(--clr-primary);
     opacity: 0.45;
     z-index: 1;
+}
+[dir="rtl"] .abt-timeline-node:not(:last-child)::after {
+    left: auto;
+    right: 50%;
 }
 .abt-timeline-year-bubble {
     width: 48px;
@@ -9835,6 +9929,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 @media (max-width: 500px) {
     .abt-pillars-grid { grid-template-columns: 1fr; }
     .abt-team-grid { grid-template-columns: 1fr; }
+    .abt-vault-swatches-strip { grid-template-columns: 1fr; }
 }
 
 /* ═══════════════════════════════════════════════════════
